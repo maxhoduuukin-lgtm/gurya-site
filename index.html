@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ГУРЯ — Сборка игровых ПК и честный ремонт электроники в Магнитогорске</title>
+    <style>
+        /* CSS Variables for Brand Book */
+        :root {
+            --bg-dark: #0F0F12;
+            --bg-card: #15151A;
+            --bg-card-hover: #1C1C24;
+            --primary: #6C3CFF;
+            --primary-glow: rgba(108, 60, 255, 0.4);
+            --text-main: #FFFFFF;
+            --text-sub: #BFBFBF;
+            --text-muted: #7F7F7F;
+            --success: #00FF66;
+        }
+
+        /* Base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1A1A22;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: var(--text-main);
+            text-decoration: none;
+            line-height: 1;
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 4px;
+            font-weight: bold;
+        }
+
+        .header-phones {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .header-phone {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            border: 1px solid var(--primary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .header-phone:hover {
+            background-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background-color: var(--primary);
+            filter: blur(150px);
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge-engineering {
+            background: rgba(108, 60, 255, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            color: var(--primary);
+        }
+
+        .hero-desc {
+            font-size: 20px;
+            color: var(--text-sub);
+            max-width: 650px;
+            margin: 0 auto 40px auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--text-main);
+            box-shadow: 0 4px 20px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(108, 60, 255, 0.6);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 2px solid #2A2A35;
+        }
+
+        .btn-secondary:hover {
+            background-color: #1A1A24;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Stats Grid */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 40px 0;
+            border-top: 1px solid #1A1A22;
+            border-bottom: 1px solid #1A1A22;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-num {
+            font-size: 40px;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        /* Services Section */
+        .section-title {
+            font-size: 32px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            margin-top: 80px;
+            border-left: 5px solid var(--primary);
+            padding-left: 20px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            border: 1px solid #1A1A22;
+            border-radius: 12px;
+            padding: 35px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            background-color: var(--bg-card-hover);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-icon {
+            font-size: 36px;
+            margin-bottom: 25px;
+        }
+
+        .service-name {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .service-desc {
+            font-size: 15px;
+            color: var(--text-sub);
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .service-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .service-list li {
+            font-size: 14px;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-list li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .service-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .service-link:hover {
+            color: var(--text-main);
+        }
+
+        /* Brand DNA / About Section */
+        .dna-section {
+            background-color: var(--bg-card);
+            border: 1px solid #1A1A22;
+            border-radius: 16px;
+            padding: 50px;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dna-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .dna-text h3 {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .dna-text p {
+            font-size: 16px;
+            color: var(--text-sub);
+            margin-bottom: 20px;
+        }
+
+        .dna-quote {
+            border-left: 3px solid var(--primary);
+            padding-left: 20px;
+            font-style: italic;
+            color: var(--text-main);
+            margin: 30px 0;
+            font-size: 17px;
+        }
+
+        .dna-stats {
+            background-color: var(--bg-dark);
+            border: 1px solid #22222B;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .dna-stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #1A1A22;
+        }
+
+        .dna-stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .dna-stat-name {
+            font-size: 14px;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .dna-stat-val {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        /* Contacts Section */
+        .contacts {
+            margin-top: 80px;
+            background-color: var(--bg-card);
+            border: 1px solid #1A1A22;
+            border-radius: 16px;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-title {
+            font-size: 28px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+        }
+
+        .contact-label {
+            font-size: 11px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .contact-val {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .contact-val a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-val a:hover {
+            color: var(--primary);
+        }
+
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            background-color: #0F0F12;
+            border: 1px solid #22222B;
+            padding: 15px 25px;
+            border-radius: 8px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--primary-glow);
+        }
+
+        .map-mock {
+            background-color: #0F0F12;
+            border: 1px solid #1A1A22;
+            border-radius: 12px;
+            height: 100%;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .map-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 80px;
+            padding: 30px 0;
+            border-top: 1px solid #1A1A22;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 40px;
+            }
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 20px 0;
+            }
+            .dna-grid, .contacts {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .dna-section, .contacts {
+                padding: 30px;
+            }
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .header-phones {
+                width: 100%;
+            }
+            .header-phone {
+                flex-grow: 1;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-group">
+                <a href="#" class="logo">ГУРЯ</a>
+                <span class="logo-sub">Честно. Надёжно. По уму</span>
+            </div>
+            <div class="header-phones">
+                <a href="tel:+79936522896" class="header-phone">8 (993) 652-28-96</a>
+                <a href="tel:+79823074928" class="header-phone">8 (982) 307-49-28</a>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="badge-engineering">Инженерный расчёт превыше маркетинга</span>
+                <h1 class="hero-title">Сборка мощных ПК & <br>Честный ремонт <span>электроники</span></h1>
+                <p class="hero-desc">9+ лет практики. Компонентный ремонт плат любой сложности, сборка игровых машин во дворе на Герцена, 2.</p>
+                <div class="cta-buttons">
+                    <a href="#services" class="btn btn-primary">Посмотреть услуги</a>
+                    <a href="#contacts" class="btn btn-secondary">Связаться с мастером</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="stat-card">
+                <div class="stat-num">9+ лет</div>
+                <div class="stat-label">Опыта в инженерии</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">160 кг</div>
+                <div class="stat-label">Жим лёжа (Сила и Дисциплина)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Честный ремонт без накруток</div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <h2 class="section-title">Направления работы</h2>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon">🖥️</div>
+                        <h3 class="service-name">Игровые и кастомные ПК</h3>
+                        <p class="service-desc">Сборка сбалансированных компьютеров под ключ. Никакой экономии на спичках (БП и VRM), только проверенные решения.</p>
+                        <ul class="service-list">
+                            <li>Оптимизация под ваш бюджет</li>
+                            <li>Анлок турбобуста и тонкая настройка BIOS</li>
+                            <li>Кабель-менеджмент и стресс-тесты под нагрузкой</li>
+                            <li>Честная гарантия — 12 месяцев</li>
+                        </ul>
+                    </div>
+                    <!-- Link to Avito PC Profile -->
+                    <a href="https://www.avito.ru/brands/5832b227575e03a1d00fd29232d21e88" class="service-link" target="_blank">Каталог ПК на Авито →</a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon">🛠️</div>
+                        <h3 class="service-name">Ремонт электроники</h3>
+                        <p class="service-desc">Профессиональный компонентный ремонт плат. Работаю под микроскопом с паяльной станцией и мультиметром. Без посредников.</p>
+                        <ul class="service-list">
+                            <li>Ремонт компьютеров и ноутбуков (BGA-пайка, BIOS)</li>
+                            <li>Ремонт смартфонов и планшетов</li>
+                            <li>Ремонт телевизоров, консолей и кофемашин</li>
+                            <li>Ремонт часов и сложной микроэлектроники</li>
+                        </ul>
+                    </div>
+                    <!-- Link to Avito Repair Profile -->
+                    <a href="https://www.avito.ru/user/651e672f14ae03f85cb351e9a4c286fd/profile" class="service-link" target="_blank">Заказать ремонт на Авито →</a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon">🔄</div>
+                        <h3 class="service-name">Умный Trade-In</h3>
+                        <p class="service-desc">Принимаю ваше старое железо и электронику в зачёт новой сборки или ремонта. Оценка прозрачная, строго по регламенту после полной диагностики.</p>
+                        <ul class="service-list">
+                            <li>Честная оценка: минус 30% от нижнего порога Авито</li>
+                            <li>Возможность апгрейда старого ПК до ультра-настроек</li>
+                            <li>Быстрый выкуп в день обращения</li>
+                        </ul>
+                    </div>
+                    <a href="#contacts" class="service-link">Оценить железо →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Brand DNA Section -->
+        <section class="dna-section">
+            <div class="dna-grid">
+                <div class="dna-text">
+                    <h3>Мастер Максим Гуря</h3>
+                    <p>Я профессиональный инженер-самоучка с 9-летним стажем работы на компонентном уровне. Моя страсть — давать новую жизнь сложнейшей электронике и собирать компьютеры, которые работают на пределе своих физических возможностей.</p>
+                    <p>Помимо инженерии, я профессионально занимаюсь силовым спортом (становая тяга 270 кг, жим лёжа 160 кг, присед 255 кг). Своими руками я построил тренировочный зал прямо во дворе, где тренирую местных ребят. Сила, дисциплина и точный расчёт — это фундамент всего, что я делаю.</p>
+                    <div class="dna-quote">
+                        "ГУРЯ — это про мужской подход. Честно. Надёжно. По уму. Инженерный расчёт всегда важнее маркетинговых обещаний."
+                    </div>
+                </div>
+                <div>
+                    <div class="dna-stats">
+                        <div class="dna-stat-row">
+                            <span class="dna-stat-name">База</span>
+                            <span class="dna-stat-val">Магнитогорск</span>
+                        </div>
+                        <div class="dna-stat-row">
+                            <span class="dna-stat-name">Стаж практики</span>
+                            <span class="dna-stat-val">9+ лет</span>
+                        </div>
+                        <div class="dna-stat-row">
+                            <span class="dna-stat-name">Становая тяга</span>
+                            <span class="dna-stat-val">270 кг</span>
+                        </div>
+                        <div class="dna-stat-row">
+                            <span class="dna-stat-name">Жим лёжа</span>
+                            <span class="dna-stat-val">160 кг</span>
+                        </div>
+                        <div class="dna-stat-row">
+                            <span class="dna-stat-name">Присед</span>
+                            <span class="dna-stat-val">255 кг</span>
+                        </div>
+                        <div class="dna-stat-row">
+                            <span class="dna-stat-name">Инструмент</span>
+                            <span class="dna-stat-val">BGA / Микроскоп</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacts Section -->
+        <section id="contacts" class="contacts">
+            <div class="contact-info">
+                <div>
+                    <h2 class="contact-title" style="margin-top: 0; border-left: none; padding-left: 0;">Связаться со мной</h2>
+                    
+                    <div class="contact-item">
+                        <div class="contact-label">Адрес мастерской</div>
+                        <div class="contact-val">г. Магнитогорск, ул. Герцена, 2 (Вход с торца)</div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-label">Режим работы</div>
+                        <div class="contact-val">ПН – СБ: 11:00 – 20:00<br>ВС: По договоренности</div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-label">Контактные телефоны</div>
+                        <div class="contact-val" style="font-size: 20px; line-height: 1.5;">
+                            <a href="tel:+79936522896">8 (993) 652-28-96</a><br>
+                            <a href="tel:+79823074928">8 (982) 307-49-28</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-buttons">
+                    <a href="https://www.avito.ru/user/651e672f14ae03f85cb351e9a4c286fd/profile" class="social-btn" target="_blank">
+                        💬 Написать на Авито (Ремонт)
+                    </a>
+                    <a href="https://www.avito.ru/brands/5832b227575e03a1d00fd29232d21e88" class="social-btn" target="_blank">
+                        🎮 Написать на Авито (Продажа ПК)
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <div class="map-mock">
+                    <div class="map-icon">📍</div>
+                    <h4 style="font-size: 18px; margin-bottom: 10px; text-transform: uppercase;">Как добраться</h4>
+                    <p style="font-size: 14px; color: var(--text-sub); margin-bottom: 20px;">Вход находится с торца здания. Здание зашито характерным тёмным поликарбонатом. Рядом висят вывеска «ГУРЯ» и график работы.</p>
+                    <a href="https://go.2gis.com/Ab1LM" class="btn btn-secondary" style="padding: 10px 20px; font-size: 14px;" target="_blank">Открыть на картах 2ГИС</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            © 2026 ЭКОСИСТЕМА ГУРЯ. ВСЕ ПРАВА ЗАЩИЩЕНЫ. СДЕЛАНО ЧЕСТНО, НАДЁЖНО, ПО УМУ.
+        </footer>
+    </div>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a10d7a8258e9fb99',t:'MTc4MjMyMjQxNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
