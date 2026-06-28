@@ -76,7 +76,7 @@
         }
 
         .logo {
-            font-size: 32px;
+            font-size: 40px; /* Big, readable and prominent */
             font-weight: 900;
             letter-spacing: 4px;
             color: var(--text-main);
@@ -85,12 +85,13 @@
         }
 
         .logo-sub {
-            font-size: 10px;
+            font-size: 15px; /* Large, bold logo slogan as requested! */
             color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-top: 4px;
-            font-weight: bold;
+            margin-top: 8px;
+            font-weight: 800; /* Extremely visible */
+            text-shadow: 0 0 10px rgba(108, 60, 255, 0.2);
         }
 
         .header-phones {
@@ -313,8 +314,8 @@
             font-weight: bold;
         }
 
-        /* Delivery Badge */
-        .delivery-badge {
+        /* Delivery Active Button */
+        .delivery-btn-badge {
             background-color: rgba(0, 255, 102, 0.1);
             border: 1px dashed var(--success);
             color: var(--success);
@@ -325,9 +326,20 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 20px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .delivery-btn-badge:hover {
+            background-color: rgba(0, 255, 102, 0.2);
+            box-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
+            transform: scale(1.02);
         }
 
         .service-link {
@@ -347,7 +359,7 @@
             color: var(--text-main);
         }
 
-        /* Brand DNA / About Section */
+        /* Brand DNA / About Section with Perfect Stretch Alignment */
         .dna-section {
             background-color: var(--bg-card);
             border: 1px solid rgba(34, 34, 43, 0.5);
@@ -363,7 +375,14 @@
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
             gap: 40px;
-            align-items: center;
+            align-items: stretch; /* Stretches left text card and right gallery card to the exact same height */
+        }
+
+        .dna-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Spreads title, description and quote perfectly */
+            height: 100%;
         }
 
         .dna-text h3 {
@@ -384,39 +403,81 @@
             padding-left: 20px;
             font-style: italic;
             color: var(--text-main);
-            margin: 30px 0;
+            margin-top: auto; /* Pushes quote to the very bottom to align with the bottom of the right card */
             font-size: 17px;
         }
 
-        .dna-stats {
+        /* Gallery Container Inside About Me (Perfect Alignment with description) */
+        .gallery-container {
             background-color: rgba(15, 15, 18, 0.6);
             border: 1px solid rgba(34, 34, 43, 0.5);
             border-radius: 12px;
-            padding: 30px;
-        }
-
-        .dna-stat-row {
+            padding: 24px;
+            height: 100%; /* Stretches to align perfectly with the left column */
             display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #1A1A22;
+            flex-direction: column;
+            justify-content: space-between; /* Aligns header at top, grid at bottom */
         }
 
-        .dna-stat-row:last-child {
-            border-bottom: none;
-        }
-
-        .dna-stat-name {
-            font-size: 14px;
-            color: var(--text-sub);
+        .gallery-title {
+            font-size: 15px;
+            font-weight: bold;
             text-transform: uppercase;
-            font-weight: bold;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            text-align: center;
         }
 
-        .dna-stat-val {
-            font-size: 16px;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            flex-grow: 1;
+            align-content: center;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            border: 1px solid rgba(108, 60, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 12px var(--primary-glow);
+            transform: scale(1.03);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 12, 0.95) 80%);
+            color: var(--text-main);
+            font-size: 10px;
             font-weight: bold;
-            color: var(--primary);
+            text-transform: uppercase;
+            padding: 8px 10px;
+            text-align: center;
+            letter-spacing: 0.5px;
         }
 
         /* Contacts Section with Perfect Stretch Alignment */
@@ -598,8 +659,155 @@
             letter-spacing: 1.5px;
         }
 
+        /* Modal and Lightbox CSS */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: #15151A;
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(108, 60, 255, 0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            color: #BFBFBF;
+            font-size: 28px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #FFFFFF;
+        }
+
+        .modal h3 {
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(108, 60, 255, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .modal p {
+            font-size: 15px;
+            margin-bottom: 15px;
+            color: var(--text-sub);
+        }
+
+        .modal p strong {
+            color: var(--text-main);
+        }
+
+        /* Lightbox CSS */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 4000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 85%;
+            max-height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: 8px;
+            border: 1px solid rgba(108, 60, 255, 0.3);
+            box-shadow: 0 0 30px rgba(108, 60, 255, 0.4);
+        }
+
+        #lightbox-caption {
+            margin-top: 15px;
+            color: #BFBFBF;
+            font-size: 15px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: #BFBFBF;
+            font-size: 35px;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 4100;
+        }
+
+        .close-lightbox:hover {
+            color: #FFFFFF;
+        }
+
+        .lightbox-prev, .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #BFBFBF;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 20px;
+            user-select: none;
+            transition: color 0.3s;
+            z-index: 4100;
+        }
+
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+        .lightbox-prev:hover, .lightbox-next:hover, .close-lightbox:hover { color: #FFFFFF; }
+
         /* Responsive Breakpoints */
         @media (max-width: 768px) {
+            .logo {
+                font-size: 34px;
+            }
+            .logo-sub {
+                font-size: 13px;
+            }
             .hero-title {
                 font-size: 34px;
             }
@@ -704,7 +912,7 @@
         <header>
             <div class="logo-group">
                 <a href="#" class="logo">ГУРЯ</a>
-                <span class="logo-sub">Честно. Надёжно. По уму</span>
+                <span class="logo-sub">Честно. Надёжно. Железно</span>
             </div>
             <div class="header-phones">
                 <a href="tel:+79936522896" class="header-phone">8 (993) 652-28-96</a>
@@ -717,7 +925,7 @@
             <div class="hero-content">
                 <span class="badge-engineering">Инженерный расчёт превыше маркетинга</span>
                 <h1 class="hero-title">Железный характер<br><span>Инженерный расчёт</span></h1>
-                <p class="hero-desc">Профессиональная сборка ПК и ремонт электроники любой сложности. Мужской подход, точные замеры и честные цены.</p>
+                <p class="hero-desc">Профессиональная сборка ПК и ремонт электроники любой сложности. Гарантия, точность и честные цены.</p>
                 <div class="cta-buttons">
                     <a href="#services" class="btn btn-primary">Посмотреть услуги</a>
                     <a href="#contacts" class="btn btn-secondary">Связаться с мастером</a>
@@ -725,19 +933,19 @@
             </div>
         </section>
 
-        <!-- Stats Section -->
+        <!-- Stats Section (Professional focus) -->
         <section class="stats">
             <div class="stat-card">
                 <div class="stat-num">9+ лет</div>
-                <div class="stat-label">Опыта в инженерии</div>
+                <div class="stat-label">Опыта в инженерии плат</div>
             </div>
             <div class="stat-card">
-                <div class="stat-num">160 кг</div>
-                <div class="stat-label">Жим лёжа (Сила и Дисциплина)</div>
+                <div class="stat-num">1789</div>
+                <div class="stat-label">Отремонтированных девайсов</div>
             </div>
             <div class="stat-card">
-                <div class="stat-num">100%</div>
-                <div class="stat-label">Честный ремонт без накруток</div>
+                <div class="stat-num">143</div>
+                <div class="stat-label">Реально собранных ПК под ключ</div>
             </div>
         </section>
 
@@ -752,12 +960,12 @@
                         <div class="service-icon">🖥️</div>
                         <h3 class="service-name">Игровые и кастомные ПК</h3>
                         
-                        <!-- Delivery Highlight Badge -->
-                        <div class="delivery-badge">
+                        <!-- Delivery Active Button -->
+                        <div id="delivery-btn" class="delivery-btn-badge">
                             <span>📦 Доставка по всей России</span>
                         </div>
                         
-                        <p class="service-desc">Сборка сбалансированных компьютеров под ключ с безопасной отправкой в любой город РФ. Упаковываем намертво в несколько слоев воздушно-пузырьковой пленки и прочного картона, отправка через СДЭК/Боксберри.</p>
+                        <p class="service-desc">Сборка сбалансированных компьютеров под ключ с безопасной отправкой в любой город РФ. Упаковываем надёжно в несколько слоев воздушно-пузырьковой пленки и прочного картона, отправка через СДЭК, Почту, Авито или Яндекс.</p>
                         <ul class="service-list">
                             <li>Оптимизация под ваш бюджет</li>
                             <li>Анлок турбобуста и тонкая настройка BIOS</li>
@@ -776,10 +984,11 @@
                         <h3 class="service-name">Ремонт электроники</h3>
                         <p class="service-desc">Профессиональный компонентный ремонт плат. Работаю под микроскопом с паяльной станцией и мультиметром. Без посредников.</p>
                         <ul class="service-list">
-                            <li>Ремонт компьютеров и ноутбуков (BGA-пайка, BIOS)</li>
-                            <li>Ремонт смартфонов и планшетов</li>
-                            <li>Ремонт телевизоров, консолей и кофемашин</li>
-                            <li>Ремонт часов и сложной микроэлектроники</li>
+                            <li>Ремонт компьютеров и ноутбуков любого уровня</li>
+                            <li>Ремонт телевизоров и мониторов</li>
+                            <li>Ремонт игровых приставок</li>
+                            <li>Ремонт профессиональных и бытовых кофемашин</li>
+                            <li>Ремонт смарт-часов и сложной микроэлектроники</li>
                         </ul>
                     </div>
                     <!-- Link to Avito Repair Profile -->
@@ -793,7 +1002,7 @@
                         <h3 class="service-name">Умный Trade-In</h3>
                         <p class="service-desc">Принимаю ваше старое железо и электронику в зачёт новой сборки или ремонта. Оценка прозрачная, строго по регламенту после полной диагностики.</p>
                         <ul class="service-list">
-                            <li>Честная оценка: минус 30% от нижнего порога Авито</li>
+                            <li>Честная оценка: минус 30% от среднего порога Авито</li>
                             <li>Возможность апгрейда старого ПК до ультра-настроек</li>
                             <li>Быстрый выкуп в день обращения</li>
                         </ul>
@@ -803,42 +1012,41 @@
             </div>
         </section>
 
-        <!-- About / Brand DNA Section -->
-        <section class="dna-section">
+        <!-- About / Brand DNA Section with Perfect Alignments -->
+        <section id="about" class="dna-section">
             <div class="dna-grid">
+                <!-- Left text card -->
                 <div class="dna-text">
-                    <h3>Мастер Максим Гуря</h3>
-                    <p>Я профессиональный инженер-самоучка с 9-летним стажем работы на компонентном уровне. Моя страсть — давать новую жизнь сложнейшей электронике и собирать компьютеры, которые работают на пределе своих физических возможностей.</p>
-                    <p>Помимо инженерии, я профессионально занимаюсь силовым спортом (становая тяга 270 кг, жим лёжа 160 кг, присед 255 кг). Своими руками я построил тренировочный зал прямо во дворе, где тренирую местных ребят. Сила, дисциплина и точный расчёт — это фундамент всего, что я делаю.</p>
+                    <div>
+                        <h3>Мастер Максим Гуря</h3>
+                        <p>Я независимый технический специалист-практик с 9-летним стажем работы на компонентном уровне. Моя страсть — давать новую жизнь сложнейшей электронике и собирать компьютеры, которые работают на пределе своих физических возможностей.</p>
+                        <p>Помимо инженерии, я профессионально занимаюсь силовым спортом (становая тяга 270 кг, жим лёжа 160 кг, присед 255 кг). Своими руками я построил тренировочный зал прямо во дворе, где тренирую местных ребят. Сила, дисциплина и точный расчёт — это фундамент всего, что я делаю.</p>
+                    </div>
                     <div class="dna-quote">
-                        "Железная дисциплина на помосте. Железная точность под микроскопом."
+                        "Железная дисциплина на помосте. Железная хватка под микроскопом."
                     </div>
                 </div>
-                <div>
-                    <div class="dna-stats">
-                        <div class="dna-stat-row">
-                            <span class="dna-stat-name">База</span>
-                            <span class="dna-stat-val">Магнитогорск</span>
+                
+                <!-- Right gallery card (Exactly aligned in height and border style!) -->
+                <div class="gallery-container">
+                    <h4 class="gallery-title">Галерея моих работ и спорта</h4>
+                    <div class="gallery-grid">
+                        <!-- Clicking opens the dedicated album slideshow! -->
+                        <div class="gallery-item" onclick="openAlbum('pc')">
+                            <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=300&q=80" alt="Игровые ПК">
+                            <span class="gallery-item-label">Игровые ПК</span>
                         </div>
-                        <div class="dna-stat-row">
-                            <span class="dna-stat-name">Стаж практики</span>
-                            <span class="dna-stat-val">9+ лет</span>
+                        <div class="gallery-item" onclick="openAlbum('repair')">
+                            <img src="https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=300&q=80" alt="Ремонт плат">
+                            <span class="gallery-item-label">Ремонт плат</span>
                         </div>
-                        <div class="dna-stat-row">
-                            <span class="dna-stat-name">Становая тяга</span>
-                            <span class="dna-stat-val">270 кг</span>
+                        <div class="gallery-item" onclick="openAlbum('sport')">
+                            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=300&q=80" alt="Пауэрлифтинг">
+                            <span class="gallery-item-label">Пауэрлифтинг</span>
                         </div>
-                        <div class="dna-stat-row">
-                            <span class="dna-stat-name">Жим лёжа</span>
-                            <span class="dna-stat-val">160 кг</span>
-                        </div>
-                        <div class="dna-stat-row">
-                            <span class="dna-stat-name">Присед</span>
-                            <span class="dna-stat-val">255 кг</span>
-                        </div>
-                        <div class="dna-stat-row">
-                            <span class="dna-stat-name">Инструмент</span>
-                            <span class="dna-stat-val">BGA / Микроскоп</span>
+                        <div class="gallery-item" onclick="openAlbum('gym')">
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=300&q=80" alt="Зал во дворе">
+                            <span class="gallery-item-label">Зал во дворе</span>
                         </div>
                     </div>
                 </div>
@@ -933,5 +1141,149 @@
         </footer>
     </div>
 
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a11314918c0bfea4',t:'MTc4MjM4MTE1Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <!-- 📦 Interactive Delivery Modal -->
+    <div id="delivery-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Надёжная доставка</h3>
+            <p><strong>По Магнитогорску:</strong> БЕСПЛАТНО (сами привезем, подключим и проверим вместе с вами).</p>
+            <p><strong>По всей России:</strong> Отправляем в любой город через проверенные службы: <strong>СДЭК, Почта России, Авито Доставка и Яндекс Доставка</strong>.</p>
+            <p><strong>Надёжность упаковки:</strong> «Упаковываем надёжно: в несколько слоев, за все время отправлено 56 ПК, ни один не пострадал».</p>
+        </div>
+    </div>
+
+    <!-- 🖼️ Interactive Lightbox Gallery Modal -->
+    <div id="lightbox" class="lightbox-modal">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-prev" onclick="changeSlide(-1)">&#10094;</span>
+        <span class="lightbox-next" onclick="changeSlide(1)">&#10095;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Просмотр">
+            <div id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Interactive Scripts (Fully Offline, Fast and secure) -->
+    <script>
+        // --- 1. Delivery Modal Logic ---
+        const modal = document.getElementById('delivery-modal');
+        const btn = document.getElementById('delivery-btn');
+        const span = document.getElementsByClassName('close-modal')[0];
+
+        if (btn && modal) {
+            btn.onclick = function(e) {
+                e.preventDefault();
+                modal.classList.add('active');
+            }
+        }
+        if (span && modal) {
+            span.onclick = function() {
+                modal.classList.remove('active');
+            }
+        }
+
+        // --- 2. Multi-Photo Album Gallery Logic (Inside About Me Grid) ---
+        // Each category holds a list of 10 different real photos!
+        // When clicked, it loads that category album and lets the user swipe through it.
+        const albums = {
+            pc: [
+                { src: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80", title: "Кастомный игровой ПК Red Devil Crystal" },
+                { src: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80", title: "Сборка Stealth-класса «Бартер на Бревно» под заказ" },
+                { src: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=1200&q=80", title: "Сбалансированная игровая машина на Xeon E5 и DDR3" },
+                { src: "https://images.unsplash.com/photo-1618424181497-157f25b6ddd5?auto=format&fit=crop&w=1200&q=80", title: "Профессиональный кабель-менеджмент и оптимизация" },
+                { src: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=1200&q=80", title: "Тестирование видеокарты под максимальной нагрузкой" },
+                { src: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80", title: "Индивидуальный подбор комплектующих и VRM" },
+                { src: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80", title: "Качественная и быстрая укладка кабелей питания" },
+                { src: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=1200&q=80", title: "Умные бюджетные сборки на базе сокета LGA2011-3" },
+                { src: "https://images.unsplash.com/photo-1618424181497-157f25b6ddd5?auto=format&fit=crop&w=1200&q=80", title: "Стресс-тестирование собранного ПК в бенчмарках перед отправкой" },
+                { src: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=1200&q=80", title: "Кастомные графические решения на базе CMP 40HX и RTX 3070m" }
+            ],
+            repair: [
+                { src: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=1200&q=80", title: "Пайка BGA-сокета на инфракрасной паяльной станции" },
+                { src: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=1200&q=80", title: "Восстановление поврежденных дорожек платы после залития" },
+                { src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80", title: "Высокоточная диагностика VRM-цепей питания процессора мультиметром" },
+                { src: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=1200&q=80", title: "Замена MOSFET ключей на материнской плате ноутбука" },
+                { src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80", title: "Прошивка BIOS программатором напрямую на микросхему" },
+                { src: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=1200&q=80", title: "Ювелирная пайка SMD-компонентов под микроскопом" },
+                { src: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=1200&q=80", title: "Очистка платы ультразвуком после попадания влаги" },
+                { src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80", title: "Замена чипа южного моста под микроскопом" },
+                { src: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=1200&q=80", title: "Компонентный ремонт блока питания видеокарты" },
+                { src: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=1200&q=80", title: "Диагностика цепей PGOOD на материнской плате" }
+            ],
+            sport: [
+                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Становая тяга 270 кг на официальном помосте" },
+                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Жим лежа 160 кг в тренировочном зале" },
+                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Приседания со штангой 255 кг" },
+                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Силовой экстрим во дворе" },
+                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Тренировка с ребятами на уличной площадке" },
+                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Упражнения с камнями Атласа и бревном" },
+                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Дисциплина и упорные тренировки на помосте" },
+                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Подготовка к соревнованиям по пауэрлифтингу" },
+                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Разминка перед становой тягой" },
+                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Силовые рекорды и железный гриф" }
+            ],
+            gym: [
+                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Собственный тренировочный зал во дворе, построенный своими руками" },
+                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Площадка для уличных тренировок по силовому экстриму" },
+                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Спортивные снаряды и железные блины в моем зале" },
+                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Тренировочная зона для местной молодежи" },
+                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Строительство зала: своими руками и на века" },
+                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Инвентарь для пауэрлифтинга и бодибилдинга" },
+                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Зона свободных весов и силовых рам" },
+                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Тренировки во дворе под открытым небом" },
+                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Брутальный мужской зал: Честно. Надежно. Железно" },
+                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Спортивное братство в нашем дворовом зале" }
+            ]
+        };
+
+        let currentAlbumKey = 'pc';
+        let currentSlideIndex = 0;
+        const lightboxModal = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCap = document.getElementById('lightbox-caption');
+
+        // Opening a specific album modal
+        window.openAlbum = function(albumKey) {
+            currentAlbumKey = albumKey;
+            currentSlideIndex = 0;
+            updateSlide();
+            lightboxModal.classList.add('active');
+        }
+
+        window.closeLightbox = function() {
+            lightboxModal.classList.remove('active');
+        }
+
+        window.changeSlide = function(direction) {
+            const album = albums[currentAlbumKey];
+            currentSlideIndex += direction;
+            if (currentSlideIndex >= album.length) currentSlideIndex = 0;
+            if (currentSlideIndex < 0) currentSlideIndex = album.length - 1;
+            updateSlide();
+        }
+
+        function updateSlide() {
+            const slide = albums[currentAlbumKey][currentSlideIndex];
+            lightboxImg.src = slide.src;
+            lightboxCap.innerText = `${currentSlideIndex + 1} / ${albums[currentAlbumKey].length} — ${slide.title}`;
+        }
+
+        // Close on Esc key or click outside modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+                if (modal) modal.classList.remove('active');
+            }
+        });
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.classList.remove('active');
+            }
+            if (event.target == lightboxModal) {
+                closeLightbox();
+            }
+        }
+    </script>
+
+</body>
 </html>
