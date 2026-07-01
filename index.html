@@ -38,6 +38,23 @@
             line-height: 1.6;
             padding-bottom: 60px;
             overflow-x: hidden;
+            
+            /* Disable text selection across the site as suggested by programmer */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Enable text selection specifically for contact details so users can copy them */
+        .header-phone, 
+        .contact-val, 
+        .contact-val a,
+        .logo {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
         }
 
         /* Animated PCB Background */
@@ -269,6 +286,9 @@
             flex-direction: column;
             justify-content: space-between;
             backdrop-filter: blur(10px);
+            text-decoration: none; /* Remove default link styles since cards are <a> tags now */
+            color: inherit;
+            cursor: pointer;
         }
 
         .service-card:hover {
@@ -357,7 +377,7 @@
             margin-top: auto;
         }
 
-        .service-link:hover {
+        .service-card:hover .service-link {
             color: var(--text-main);
         }
 
@@ -370,7 +390,6 @@
             margin-top: 80px;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(10px);
         }
 
         .dna-grid {
@@ -649,18 +668,6 @@
             fill: currentColor;
         }
 
-        /* Footer */
-        footer {
-            margin-top: 80px;
-            padding: 30px 0;
-            border-top: 1px solid rgba(34, 34, 43, 0.4);
-            text-align: center;
-            font-size: 13px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
         /* Modal and Lightbox CSS */
         .modal {
             display: none;
@@ -802,10 +809,22 @@
         .lightbox-next { right: 20px; }
         .lightbox-prev:hover, .lightbox-next:hover, .close-lightbox:hover { color: #FFFFFF; }
 
+        /* Footer */
+        footer {
+            margin-top: 80px;
+            padding: 30px 0;
+            border-top: 1px solid rgba(34, 34, 43, 0.4);
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
         /* Responsive Breakpoints */
         @media (max-width: 768px) {
             .logo {
-                font-size: 34px;
+                font-size: 36px;
             }
             .logo-sub {
                 font-size: 13px;
@@ -956,8 +975,8 @@
             <h2 class="section-title">Направления работы</h2>
             
             <div class="services-grid">
-                <!-- Service 1 -->
-                <div class="service-card">
+                <!-- Service 1 (Entire block is now a link!) -->
+                <a href="https://www.avito.ru/brands/5832b227575e03a1d00fd29232d21e88" class="service-card" target="_blank">
                     <div>
                         <div class="service-icon">🖥️</div>
                         <h3 class="service-name">Игровые и кастомные ПК</h3>
@@ -975,12 +994,10 @@
                             <li>Честная гарантия — 12 месяцев</li>
                         </ul>
                     </div>
-                    <!-- Link to Avito PC Profile -->
-                    <a href="https://www.avito.ru/brands/5832b227575e03a1d00fd29232d21e88" class="service-link" target="_blank">Каталог ПК на Авито →</a>
-                </div>
+                </a>
 
-                <!-- Service 2 -->
-                <div class="service-card">
+                <!-- Service 2 (Entire block is now a link!) -->
+                <a href="https://www.avito.ru/user/651e672f14ae03f85cb351e9a4c286fd/profile" class="service-card" target="_blank">
                     <div>
                         <div class="service-icon">🛠️</div>
                         <h3 class="service-name">Ремонт электроники</h3>
@@ -993,12 +1010,10 @@
                             <li>Ремонт смарт-часов и сложной микроэлектроники</li>
                         </ul>
                     </div>
-                    <!-- Link to Avito Repair Profile -->
-                    <a href="https://www.avito.ru/user/651e672f14ae03f85cb351e9a4c286fd/profile" class="service-link" target="_blank">Заказать ремонт на Авито →</a>
-                </div>
+                </a>
 
-                <!-- Service 3 -->
-                <div class="service-card">
+                <!-- Service 3 (Entire block is now an anchor link!) -->
+                <a href="#contacts" class="service-card">
                     <div>
                         <div class="service-icon">🔄</div>
                         <h3 class="service-name">Умный Trade-In</h3>
@@ -1009,8 +1024,7 @@
                             <li>Быстрый выкуп в день обращения</li>
                         </ul>
                     </div>
-                    <a href="#contacts" class="service-link">Оценить железо →</a>
-                </div>
+                </a>
             </div>
         </section>
 
@@ -1043,8 +1057,8 @@
                             <span class="gallery-item-label">Ремонт плат</span>
                         </div>
                         <div class="gallery-item" onclick="openAlbum('sport')">
-                            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=300&q=80" alt="Пауэрлифтинг">
-                            <span class="gallery-item-label">Пауэрлифтинг</span>
+                            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=300&q=80" alt="Силовой экстрим">
+                            <span class="gallery-item-label">Силовой экстрим</span>
                         </div>
                         <div class="gallery-item" onclick="openAlbum('gym')">
                             <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=300&q=80" alt="Зал во дворе">
@@ -1096,6 +1110,12 @@
                     <div class="map-icon">📍</div>
                     <h4 style="font-size: 16px; margin-bottom: 5px; text-transform: uppercase; font-weight: bold;">Как добраться</h4>
                     <p style="font-size: 13px; color: var(--text-sub); margin-bottom: 15px;">Вход находится с торца здания. Здание зашито характерным тёмным поликарбонатом. Рядом висят вывеска «ГУРЯ» и график работы.</p>
+                    
+                    <!-- 2GIS Reviews Widget directly inside the block! -->
+                    <div style="margin-bottom: 15px; height: 50px; overflow: hidden;">
+                        <iframe frameborder="0" width="150px" height="50px" src="https://widget.2gis.ru/api/widget?org_id=70000001095537031&amp;branch_id=70000001095537032&amp;size=medium&amp;theme=dark"></iframe>
+                    </div>
+                    
                     <a href="https://go.2gis.com/Ab1LM" class="btn btn-secondary" style="padding: 10px 20px; font-size: 14px; width: 100%; text-align: center;" target="_blank">Открыть на картах 2ГИС</a>
                 </div>
 
@@ -1175,6 +1195,7 @@
         if (btn && modal) {
             btn.onclick = function(e) {
                 e.preventDefault();
+                e.stopPropagation(); // Prevents click bubbling up to the card link!
                 modal.classList.add('active');
             }
         }
@@ -1185,8 +1206,6 @@
         }
 
         // --- 2. Multi-Photo Album Gallery Logic (Inside About Me Grid) ---
-        // Each category holds a list of 10 different real photos!
-        // When clicked, it loads that category album and lets the user swipe through it.
         const albums = {
             pc: [
                 { src: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80", title: "Кастомный игровой ПК Red Devil Crystal" },
@@ -1287,5 +1306,5 @@
         }
     </script>
 
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a131ea684e6da55c',t:'MTc4MjcwNDQ4Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
