@@ -856,6 +856,139 @@
                 text-align: center;
             }
         }
+    
+        /* Promo Banner (Radio & Elevator Action) */
+        .promo-banner-container {
+            max-width: 1200px;
+            margin: 25px auto 10px auto;
+            padding: 0 20px;
+        }
+
+        .promo-banner {
+            background: linear-gradient(135deg, rgba(21, 21, 29, 0.95) 0%, rgba(32, 24, 52, 0.95) 100%);
+            border: 2px solid var(--primary);
+            border-radius: 14px;
+            padding: 24px 28px;
+            box-shadow: 0 10px 40px rgba(108, 60, 255, 0.28);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #6C3CFF, #00FF66, #6C3CFF);
+        }
+
+        .promo-badge-tag {
+            display: inline-block;
+            background: rgba(108, 60, 255, 0.2);
+            border: 1px solid var(--primary);
+            color: #D8CEFF;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .promo-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .promo-desc {
+            font-size: 15px;
+            color: var(--text-sub);
+            max-width: 780px;
+            margin: 0 auto 20px auto;
+            line-height: 1.5;
+        }
+
+        .promo-code-pill {
+            display: inline-block;
+            background: #231E38;
+            color: #00FF66;
+            font-weight: 800;
+            padding: 2px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 255, 102, 0.4);
+            margin: 0 2px;
+        }
+
+        .promo-cta-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-promo-primary {
+            background: var(--primary);
+            color: #FFFFFF;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 800;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px var(--primary-glow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-promo-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(108, 60, 255, 0.6);
+            color: #FFFFFF;
+        }
+
+        .btn-promo-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .btn-promo-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #FFFFFF;
+            color: #FFFFFF;
+        }
+
+        @media (max-width: 600px) {
+            .promo-banner {
+                padding: 20px 16px;
+            }
+            .promo-title {
+                font-size: 21px;
+            }
+            .btn-promo-primary, .btn-promo-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -954,6 +1087,23 @@
             </div>
         </section>
 
+        <!-- Promo Banner (Акция «Собери ПК мечты» по промокоду Радио / Лифт) -->
+        <div class="promo-banner-container">
+            <div class="promo-banner">
+                <div class="promo-badge-tag">📻 РЕКЛАМНАЯ АКЦИЯ: РАДИО &amp; ЛИФТЫ</div>
+                <h3 class="promo-title">Собери ПК мечты со скидкой −10%</h3>
+                <p class="promo-desc">Услышал по радио или увидел в лифте? Назови промокод <span class="promo-code-pill">«ЛИФТ»</span> или <span class="promo-code-pill">«РАДИО»</span> при заказе индивидуальной сборки и получи честную <strong>скидку 10% на все комплектующие</strong>!</p>
+                <div class="promo-cta-buttons">
+                    <a href="https://t.me/GuryaPC?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%2C%20%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%81%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%20%D0%9F%D0%9A%20%D0%BC%D0%B5%D1%87%D1%82%D1%8B%20%D1%81%D0%BE%20%D1%81%D0%BA%D0%B8%D0%B4%D0%BA%D0%BE%D0%B9%2010%25%20%D0%BF%D0%BE%20%D0%BF%D1%80%D0%BE%D0%BC%D0%BE%D0%BA%D0%BE%D0%B4%D1%83%20%D0%9B%D0%98%D0%A4%D0%A2%20(%D0%B8%D0%BB%D0%B8%20%D0%A0%D0%90%D0%94%D0%98%D0%9E).%20%D0%9C%D0%BE%D0%B9%20%D0%B1%D1%8E%D0%B4%D0%B6%D0%B5%D1%82%20%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D0%BD%D0%BE%20..." target="_blank" rel="noopener noreferrer" class="btn-promo-primary">
+                        <span>💬 Собрать ПК со скидкой в Telegram</span>
+                    </a>
+                    <a href="https://www.avito.ru/magnitogorsk/predlozheniya_uslug/gurya_i_professionalnaya_sborka_i_apgreyd_pk_3747679486?context=H4sIAAAAAAAA_wE_AMD_YToyOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiJITUczbUYzTm54WDdWcHJnIjt9A3y0Vj8AAAA" target="_blank" rel="noopener noreferrer" class="btn-promo-secondary">
+                        <span>📄 Заказ на Авито</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- Stats Section (Professional focus) -->
         <section class="stats">
             <div class="stat-card">
@@ -997,7 +1147,7 @@
                 </a>
 
                 <!-- Service 2 (Entire block is now a link!) -->
-                <a href="https://www.avito.ru/user/651e672f14ae03f85cb351e9a4c286fd/profile" class="service-card" target="_blank">
+                <a href="https://www.avito.ru/user/0a3d1dbcd01598b683fa2eab4021cc72/profile" class="service-card" target="_blank">
                     <div>
                         <div class="service-icon">🛠️</div>
                         <h3 class="service-name">Ремонт электроники</h3>
@@ -1049,20 +1199,16 @@
                     <div class="gallery-grid">
                         <!-- Clicking opens the dedicated album slideshow! -->
                         <div class="gallery-item" onclick="openAlbum('pc')">
-                            <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=300&q=80" alt="Игровые ПК">
+                            <img src="images/pc/pc1_front.jpg" alt="Игровые ПК">
                             <span class="gallery-item-label">Игровые ПК</span>
                         </div>
                         <div class="gallery-item" onclick="openAlbum('repair')">
-                            <img src="https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=300&q=80" alt="Ремонт плат">
-                            <span class="gallery-item-label">Ремонт плат</span>
+                            <img src="https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=300&q=80" alt="Ремонт">
+                            <span class="gallery-item-label">Ремонт</span>
                         </div>
                         <div class="gallery-item" onclick="openAlbum('sport')">
-                            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=300&q=80" alt="Силовой экстрим">
+                            <img src="images/sport/sport_cup_first_place.jpg" alt="Силовой экстрим">
                             <span class="gallery-item-label">Силовой экстрим</span>
-                        </div>
-                        <div class="gallery-item" onclick="openAlbum('gym')">
-                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=300&q=80" alt="Зал во дворе">
-                            <span class="gallery-item-label">Зал во дворе</span>
                         </div>
                     </div>
                 </div>
@@ -1095,7 +1241,7 @@
                 </div>
 
                 <div class="social-buttons">
-                    <a href="https://www.avito.ru/user/651e672f14ae03f85cb351e9a4c286fd/profile" class="social-btn" target="_blank">
+                    <a href="https://www.avito.ru/user/0a3d1dbcd01598b683fa2eab4021cc72/profile" class="social-btn" target="_blank">
                         💬 Написать на Авито (Ремонт)
                     </a>
                     <a href="https://www.avito.ru/brands/5832b227575e03a1d00fd29232d21e88" class="social-btn" target="_blank">
@@ -1122,7 +1268,7 @@
                 <div class="social-media-container">
                     <h4 class="social-media-title">Познакомиться со мной</h4>
                     <div class="social-icons-grid">
-                        <!-- YouTube (PowerLiftingDoma) -->
+                        <!-- YouTube (GURYAPowerLiftingDoma) — актуальный хендл живого сайта -->
                         <a href="https://www.youtube.com/@GURYAPowerLiftingDoma" class="social-icon-link" target="_blank" title="Мой YouTube-канал">
                             <svg viewBox="0 0 24 24">
                                 <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.002 3.002 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
@@ -1208,52 +1354,57 @@
         // --- 2. Multi-Photo Album Gallery Logic (Inside About Me Grid) ---
         const albums = {
             pc: [
-                { src: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80", title: "Кастомный игровой ПК Red Devil Crystal" },
-                { src: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80", title: "Сборка Stealth-класса «Бартер на Бревно» под заказ" },
-                { src: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=1200&q=80", title: "Сбалансированная игровая машина на Xeon E5 и DDR3" },
-                { src: "https://images.unsplash.com/photo-1618424181497-157f25b6ddd5?auto=format&fit=crop&w=1200&q=80", title: "Профессиональный кабель-менеджмент и оптимизация" },
-                { src: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=1200&q=80", title: "Тестирование видеокарты под максимальной нагрузкой" },
-                { src: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80", title: "Индивидуальный подбор комплектующих и VRM" },
-                { src: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80", title: "Качественная и быстрая укладка кабелей питания" },
-                { src: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=1200&q=80", title: "Умные бюджетные сборки на базе сокета LGA2011-3" },
-                { src: "https://images.unsplash.com/photo-1618424181497-157f25b6ddd5?auto=format&fit=crop&w=1200&q=80", title: "Стресс-тестирование собранного ПК в бенчмарках перед отправкой" },
-                { src: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=1200&q=80", title: "Кастомные графические решения на базе CMP 40HX и RTX 3070m" }
+                // ПК №1 (Октябрь 2026): Ryzen 7 9800X3D + MSI RTX 5080 Gaming Trio + Lian Li EVO XL + экран 8.8"
+                { src: "images/pc/pc1_front.jpg", title: "Флагман 2026: AMD Ryzen 7 9800X3D + MSI GeForce RTX 5080 16GB Gaming Trio OC в корпусе LIAN LI EVO XL. Монохромная подсветка, экран 8.8" (Октябрь 2026)" },
+                { src: "images/pc/pc1_angle.jpg", title: "Охлаждение LIAN LI HydroShift II OLED Curved 360 Fanless + 11 вертушек LIAN LI UNI FAN SL-Infinity. Идеальная тишина и продув" },
+                { src: "images/pc/pc1_cable_management.jpg", title: "Инженерный кабель-менеджмент ГУРЯ: кастомные жгуты со стяжками EVO XL и блок питания DEEPCOOL GamerStorm PQ1000G Gold" },
+                { src: "images/pc/pc1_mb_screen.jpg", title: "Плата MSI X870 GAMING PLUS WIFI, прижимная рамка Thermalright AM5, память KingBank 32GB 7200 МГц CL36 и дисплей LIAN LI 8.8"" },
+                { src: "images/pc/pc1_vertical_gpu.jpg", title: "Вертикальная установка MSI RTX 5080 через райзер ARCTIC Accelero Vertical GPU Mount + нижний приток воздуха 140 мм" },
+                { src: "images/pc/pc1_boxes.jpg", title: "Только оригинальные заводские компоненты: упаковка и комплектующие флагманского сетапа" },
+
+                // ПК №2 (2026): Ryzen 9 9900X3D + MSI RTX 5070 Ti + Montech King 95 Pro + Thermalright Vision
+                { src: "images/pc/pc2_glass_telemetry.jpg", title: "Панорамный аквариум Montech King 95 Pro Black: AMD Ryzen 9 9900X3D (12c/24t) + MSI GeForce RTX 5070 Ti VENTUS 3X OC (2026)" },
+                { src: "images/pc/pc2_telemetry_stress.jpg", title: "СЖО Thermalright Trofeo Vision 360 с живой телеметрией: 63°C при 100% нагрузке на 5350 МГц. Железная стабильность в стресс-тестах" },
+                { src: "images/pc/pc2_open_cyan.jpg", title: "Сборка в бирюзовом свечении: плата MSI MAG X870 TOMAHAWK WIFI, 64 ГБ памяти XPG DDR5 6400 МГц CL32, БП DeepCool PN1000M" },
+                { src: "images/pc/pc2_am5_cpu.jpg", title: "Сердце сборки: процессор AMD Ryzen 9 9900X3D в сокете AM5. Идеальная чистота монтажа и термоинтерфейс" },
+
+                // ПК №3 (Март 2026): Ryzen 9 9950X3D (16c/32t) + Palit RTX 5080 + Arctic Liquid Freezer III
+                { src: "images/pc/pc3_stand_boxes.jpg", title: "Бескомпромиссная рабочая и игровая станция: 16-ядерный AMD Ryzen 9 9950X3D (16c/32t) + Palit GeForce RTX 5080 16GB GamingPro (Март 2026)" },
+                { src: "images/pc/pc3_argb_inside.jpg", title: "Охлаждение монстра 9950X3D: СЖО Arctic Liquid Freezer III 360 Pro с активным обдувом VRM, 64 ГБ памяти XPG DDR5 и NVMe 2 ТБ" },
+                { src: "images/pc/pc3_mesh_front.jpg", title: "Сквозной Mesh-фронт корпуса: избыточное давление и фильтрация пыли при максимальных нагрузках" },
+                { src: "images/pc/pc3_back_cables.jpg", title: "Кабель-менеджмент ГУРЯ: кастомная трассировка силовых линий под защитным экраном. Никаких свисающих жгутов" },
+
+                // ПК №4 (Сентябрь 2026): Народный кастом за 42 000 ₽ под Remnant 2
+                { src: "images/pc/pc4_red_dark.jpg", title: "Антикризисный кастом за 42 000 ₽: задача — стабильный FPS в тяжёлой Remnant 2 (Unreal Engine 5). Xeon E5-1650 v4 + кастомная RTX 2080" },
+                { src: "images/pc/pc4_daylight_mesh.jpg", title: "Сквозной продув Mesh-панели и кольцевые вентиляторы. Блок питания Corsair VS650 на честные 650 Вт" },
+                { src: "images/pc/pc4_open_red.jpg", title: "Единый чёрно-красный стиль: плата MACHINIST X99-RS9, башенный двухвентиляторный кулер и кастомная покраска кожуха видеокарты" },
+                { src: "images/pc/pc4_gpu_painted1.jpg", title: "Инженерный моддинг ГУРЯ: турбинная RTX 2080 обслужена на термоинтерфейс с фазовым переходом (Honeywell PTM7950) и перекрашена в геометрию" },
+
+                // ПК №5 (Апрель 2026): Белоснежный сетап под ключ за 84 750 ₽ с монитором 27" 100Гц
+                { src: "images/pc/pc5_workspace_monitor.jpg", title: "Готовое игровое место под ключ за 84 750 ₽: белый компактный аквариум + изогнутый 27" FullHD монитор 100 Гц + беспроводная периферия в подарок (Апрель 2026)" },
+                { src: "images/pc/pc5_white_purple.jpg", title: "Белоснежная монохромная эстетика: белая плата B450, белая видеокарта GIGABYTE RTX 5060 8GB White, белые радиаторы памяти 16 ГБ 3200 МГц" },
+                { src: "images/pc/pc5_white_cyan.jpg", title: "AMD Ryzen 5 5500 (6c/12t), белая башня с 4 медными трубками, кастомные белые кабели в оплётке и скоростной NVMe SSD на 1 ТБ" },
+
+                // ПК №6 (Февраль/Октябрь 2026): Белый кастом для друга за 50к + Кот
+                { src: "images/pc/pc6_cat_on_pc.jpg", title: "Главный знак качества ГУРЯ — кот спокойно спит прямо на ПК. Идеальная тишина, отсутствие вибраций и комфортные температуры. Домашний сетап у друга" },
+                { src: "images/pc/pc6_top_open.jpg", title: "Тотальный белый кастом за 50 000 ₽: компактный аквариум, Intel Xeon E5-2667 v4 в четырёхканале, кастомная белая башня GuryaGaming" },
+                { src: "images/pc/pc6_gpu_painted_back.jpg", title: "Инженерное искусство: редкая 8-болтовая RTX 3070M полностью разобрана, обслужена и вручную выкрашена в матовый белый цвет" },
+                { src: "images/pc/pc6_white_cables.jpg", title: "Ручная покраска материнской платы в белый цвет, память HyperX Fury с белыми радиаторами и белые кабели питания в гребёнках" }
             ],
             repair: [
-                { src: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=1200&q=80", title: "Пайка BGA-сокета на инфракрасной паяльной станции" },
-                { src: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=1200&q=80", title: "Восстановление поврежденных дорожек платы после залития" },
-                { src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80", title: "Высокоточная диагностика VRM-цепей питания процессора мультиметром" },
-                { src: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=1200&q=80", title: "Замена MOSFET ключей на материнской плате ноутбука" },
-                { src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80", title: "Прошивка BIOS программатором напрямую на микросхему" },
-                { src: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=1200&q=80", title: "Ювелирная пайка SMD-компонентов под микроскопом" },
-                { src: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=1200&q=80", title: "Очистка платы ультразвуком после попадания влаги" },
-                { src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80", title: "Замена чипа южного моста под микроскопом" },
-                { src: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=1200&q=80", title: "Компонентный ремонт блока питания видеокарты" },
-                { src: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=1200&q=80", title: "Диагностика цепей PGOOD на материнской плате" }
+                { src: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=1200&q=80", title: "Компонентный ремонт: пайка BGA чипов под микроскопом" },
+                { src: "https://images.unsplash.com/photo-1597733336794-12d05021d510?auto=format&fit=crop&w=1200&q=80", title: "Диагностика цепей питания (VRM) материнских плат и видеокарт" },
+                { src: "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&w=1200&q=80", title: "Замена поврежденных SMD-компонентов и восстановление дорожек" },
+                { src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80", title: "Прошивка BIOS на программаторе и восстановление цепей дежурного питания" }
             ],
             sport: [
-                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Становая тяга 270 кг на официальном помосте" },
-                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Жим лежа 160 кг в тренировочном зале" },
-                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Приседания со штангой 255 кг" },
-                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Силовой экстрим во дворе" },
-                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Тренировка с ребятами на уличной площадке" },
-                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Упражнения с камнями Атласа и бревном" },
-                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Дисциплина и упорные тренировки на помосте" },
-                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Подготовка к соревнованиям по пауэрлифтингу" },
-                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Разминка перед становой тягой" },
-                { src: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80", title: "Силовые рекорды и железный гриф" }
-            ],
-            gym: [
-                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Собственный тренировочный зал во дворе, построенный своими руками" },
-                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Площадка для уличных тренировок по силовому экстриму" },
-                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Спортивные снаряды и железные блины в моем зале" },
-                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Тренировочная зона для местной молодежи" },
-                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Строительство зала: своими руками и на века" },
-                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Инвентарь для пауэрлифтинга и бодибилдинга" },
-                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Зона свободных весов и силовых рам" },
-                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Тренировки во дворе под открытым небом" },
-                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Брутальный мужской зал: Честно. Надежно. Железно" },
-                { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80", title: "Спортивное братство в нашем дворовом зале" }
+                { src: "images/sport/sport_cup_first_place.jpg", title: "1 место — Турнир по силовому экстриму «Уральская битва», с. Еткуль 2026 г." },
+                { src: "images/sport/sport_cup_1.jpg", title: "Кубок призёра соревнований «Уральская битва» 2026 г." },
+                { src: "images/sport/sport_diploma_2nd.jpg", title: "2 место — Силовой турнир «Богатырский форсаж» 2026 г., Южноуральск" },
+                { src: "images/sport/sport_log_lift.jpg", title: "Подъём бревна над головой (Log Lift) с фирменной надписью ГУРЯ" },
+                { src: "images/sport/sport_truck_pull.jpg", title: "Буксировка автомобиля (Truck Pull)" },
+                { src: "images/sport/sport_barbell_wheels.jpg", title: "Становая тяга штанги с железнодорожными колёсами" },
+                { src: "images/sport/sport_yoke.jpg", title: "Перенос коромысла (Yoke)" }
             ]
         };
 
@@ -1306,5 +1457,5 @@
         }
     </script>
 
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a32301e3aa0b97ad',t:'MTc4NzkxNjg3Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
